@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link rel="stylesheet" th:href="@{/css/styles.css}" />
+  <script th:src="@{/js/scripts.js}"></script>
+  <title>Register</title>
+</head>
+<body>
+<form th:action="@{/register}" method="post">
+  <div>
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required/>
+  </div>
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required/>
+  </div>
+  <!-- You can add more fields like email, name, etc. -->
+  <div>
+    <button type="submit">Register</button>
+  </div>
+</form>
+</body>
+</html>

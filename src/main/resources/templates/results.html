@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Results</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+
+<h2>Weekly Game Results</h2>
+
+<table>
+  <thead>
+  <tr>
+    <th>Contestant Name</th>
+    <th>Total Correct Picks</th>
+  </tr>
+  </thead>
+  <tbody>
+  <!-- Loop through the list of results -->
+  <tr th:each="result : ${results}">
+    <td th:text="${result.contestantName}">John Doe</td>
+    <td th:text="${result.totalCorrectPicks}">5</td>
+  </tr>
+  </tbody>
+</table>
+
+<script th:src="@{/js/scripts.js}"></script>
+</body>
+</html>

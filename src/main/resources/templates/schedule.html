@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link rel="stylesheet" th:href="@{/css/styles.css}" />
+  <script th:src="@{/js/scripts.js}"></script>
+  <title>Schedule</title>
+</head>
+<body>
+<form th:action="@{/schedule}" method="post">
+  <table>
+    <thead>
+    <tr>
+      <th>Teams / Dates</th>
+      <th th:each="i : ${#numbers.sequence(1,15)}" th:text="${i}"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="team, teamStat : ${T(com.basinger.footballpicks.Team).values()}">
+      <td th:text="${team}"></td>
+      <td th:each="game, gameStat : ${schedule[teamStat.index]}"
+          th:if="${teamStat.index != gameStat.index}">
+        <input type="text" th:name="|schedule[${teamStat.index}][${gameStat.index}]|"
+               th:value="${game}" maxlength="1"/>
+      </td>
+      <td th:if="${teamStat.index == gameStat.index}">-</td>
+    </tr>
+    </tbody>
+  </table>
+  <button type="submit">Submit</button>
+</form>
+<p><a th:href="@{/logout}">Logout</a></p>
+</body>
+</html>
